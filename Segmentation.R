@@ -179,17 +179,14 @@ revenue_2015 = sqldf("SELECT customer_id, SUM(purchase_amount) AS 'revenue_2015'
                      GROUP BY 1")
 summary(revenue_2015)
 
-# Merge 2015 customers and 2015 revenue (the wrong way)
-actual = merge(customers_2015, revenue_2015)
-
-# Merge 2015 customers and 2015 revenue (correct)
+# Merge 2015 customers and 2015 revenue
 actual = merge(customers_2015, revenue_2015, all.x = TRUE)
 actual$revenue_2015[is.na(actual$revenue_2015)] = 0
 
 # Show average revenue per customer and per segment
 aggregate(x = actual$revenue_2015, by = list(customers_2015$segment), mean)
 
-# Merge 2014 customers and 2015 revenue (correct)
+# Merge 2014 customers and 2015 revenue 
 forward = merge(customers_2014, revenue_2015, all.x = TRUE)
 forward$revenue_2015[is.na(forward$revenue_2015)] = 0
 
