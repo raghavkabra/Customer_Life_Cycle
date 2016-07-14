@@ -94,9 +94,8 @@ aggregate(customers_sample[, 2:4], by = list(members), mean)
 
 
 
-# Compute key marketing indicators using SQL language
-library(sqldf)
 
+# Compute key marketing indicators using SQL language
 # Compute recency, frequency, and average purchase amount for the year 2015
 customers_2015 = sqldf("SELECT customer_id,
                        MIN(days_since) AS 'recency',
@@ -134,12 +133,7 @@ table(customers_2015$segment)
 aggregate(x = customers_2015[, 2:5], by = list(customers_2015$segment), mean)
 
 
-# --- SEGMENTING A DATABASE RETROSPECTIVELY ----------------
-
-
-# Compute key marketing indicators using SQL language
-library(sqldf)
-
+# Compute key marketing indicators using SQL language for year 2014
 # Compute recency, frequency, and average purchase amount
 customers_2014 = sqldf("SELECT customer_id,
                        MIN(days_since) - 365 AS 'recency',
