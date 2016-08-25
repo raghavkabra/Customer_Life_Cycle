@@ -99,9 +99,6 @@ print(round(segments))
 
 # --- COMPUTE THE (DISCOUNTED) CLV OF A DATABASE -----------
 
-
-# Yearly revenue per segment
-# This comes directly from module 2, lines 160-161
 yearly_revenue = c(0, 0, 0, 0, 0, 323.57, 52.31, 79.17)
 
 # Compute revenue per segment
